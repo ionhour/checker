@@ -44,12 +44,3 @@ jobs:
           push: ${{ startsWith(github.ref, 'refs/tags/v') }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
-      - name: Update Docker Hub README
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: peter-evans/dockerhub-description@v4
-        with:
-          username: ${{ secrets.DOCKER_ACCOUNT }}
-          password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
-          repository: kareemarafa/ionhour-checker
-          readme-filepath: ./README.md
