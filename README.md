@@ -12,10 +12,11 @@ services:
     image: kareemarafa/ionhour-checker:1.0.0
     environment:
       DEPENDENCIES: |
-        db:3306|https://your-check-endpoint/ping/db
-        cache:6379|https://your-check-endpoint/ping/cache
-      PING_INTERVAL_SECONDS: "10"
-      GRACE_PERIOD_SECONDS: "60"
+        mysql:3306|https://api.ionhour.com/api/signals/ping/-
+        mongodb:27017|https://api.ionhour.com/api/signals/ping/-
+        redis:6379|https://api.ionhour.com/api/signals/ping/-
+      PING_INTERVAL_SECONDS: "300"
+      GRACE_PERIOD_SECONDS: "30"
     restart: unless-stopped
     networks:
       - shared_db_network
@@ -24,9 +25,11 @@ services:
 ## Environment variables
 
 Required
+
 - DEPENDENCIES: Multi-line list of `host:port|url` entries.
 
 Optional
+
 - PING_INTERVAL_SECONDS: Time between checks (default: 10).
 - GRACE_PERIOD_SECONDS: Delay before first check (default: 0).
 
