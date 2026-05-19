@@ -9,7 +9,7 @@ via a simple multi-line environment variable.
 ```yaml
 services:
   ionhour-checker:
-    image: kareemarafa/ionhour-checker:1.0.0
+    image: ionhour-checker:local
     environment:
       DEPENDENCIES: |
         mysql:3306|https://api.ionhour.com/api/signals/ping/-
